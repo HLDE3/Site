@@ -1,5 +1,5 @@
 import './Login.css'
-import {useCookies} from 'react-cookie'
+import '../main.css'
 
 function Login() {
     
@@ -8,7 +8,6 @@ function Login() {
 
     const handleNameChange = (e) => name = e.target.value
     const handlePasswordChange = (e) => password = e.target.value
-
 
     document.title = "Sign in";
 

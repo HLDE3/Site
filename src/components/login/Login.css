@@ -1,11 +1,3 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  --color: #19d0d6;
-}
-
 .card {
   background-color: rgb(26, 26, 26);
   border-radius: 10px;
