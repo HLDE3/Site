@@ -2,11 +2,16 @@ import './Login.css'
 import '../main.css'
 import { useState } from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 function Login() {
+    const navigate = useNavigate();
+
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [pass, setPass] = useState(false);
 
     const handleNameChange = (e) => setLogin(e.target.value);
     const handlePasswordChange = (e) => setPassword(e.target.value);
@@ -20,24 +25,26 @@ function Login() {
         }
 
         try {
-            await axios.post('http://localhost:1488/users/register', {
+            await axios.post('http://localhost:1488/users/login', {
                 login: login,
                 password: password,
             });
+
+            setPass(true)
         } catch (error) {
             setError('Ошибка при регистрации: ' + error.message);
         }
 
         setLogin('');
         setPassword('');
-        setError('');
     };
 
     document.title = "Login";
 
     return (
         <div className="card">
-            <h1>Log in</h1>
+            {!pass && <h1>Log in</h1>}
+            {pass && <h1>Зарегался</h1>}
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <form onSubmit={handleSubmit}>
                 <div>
@@ -61,9 +68,12 @@ function Login() {
                     />
                 </div>
                 <div>
-                    <button type="submit">ok</button>
+                    <button type="submit">Login</button>
                 </div>
             </form>
+            <div>
+                <button onClick={() => navigate("/register")}>First time here?</button>
+            </div>
         </div>
     );
 }

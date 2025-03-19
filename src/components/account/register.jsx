@@ -2,8 +2,11 @@ import './Login.css'
 import '../main.css'
 import { useState } from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function SignIn() {
+    const navigate = useNavigate();
+    
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -20,17 +23,17 @@ function SignIn() {
         }
 
         try {
-            await axios.post('http://localhost:1488/users/register', {
+            const response = await axios.post('http://localhost:1488/users/register', {
                 login: login,
                 password: password,
             });
+        
         } catch (error) {
-            setError('Ошибка при регистрации: ' + error.message);
+            setError(error.response.data);
         }
 
         setLogin('');
         setPassword('');
-        setError('');
     };
 
     document.title = "Sign in";
@@ -61,9 +64,12 @@ function SignIn() {
                     />
                 </div>
                 <div>
-                    <button type="submit">ok</button>
+                    <button type="submit">Register</button>
                 </div>
             </form>
+            <div>
+                <button onClick={() => navigate("/login")}>I'm already have an account</button>
+            </div> 
         </div>
     );
 }
