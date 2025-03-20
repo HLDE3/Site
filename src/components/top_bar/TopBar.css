@@ -5,10 +5,12 @@
     border: 0px solid rgb(49, 49, 49);
     width: 100%;
     height: var(--top-bar-height); 
+
 }
 
 .top-bar-container {
     width: 100vw;
-    height: auto;
+    height: var(--top-bar-height);
     margin: 0px;
+    position: absolute;
 }

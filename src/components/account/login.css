@@ -15,7 +15,7 @@
   align-items: center;
   align-content: center;
   width: 100%;
-  height: calc(100vh - var(--top-bar-height));
+  height: 100vh;
 }
 
 input[type="password"], input[type="text"] {
