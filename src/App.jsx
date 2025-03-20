@@ -6,15 +6,15 @@ import TopBar from './components/top_bar/TopBar';
 
 const LoginPage = () =>  (
   <>
-    <Login />
     <TopBar />
+    <Login />
   </>
 );
 
 const SignInPage = () =>  (
   <>
-    <SignIn />
     <TopBar />
+    <SignIn />
   </>
 );
 
@@ -32,11 +32,11 @@ function App() {
 
         <Route path="*" element={<Navigate to="/home" replace />} />
         
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<LoginPage />} />
 
-        <Route path="/register" element={<SignIn />} />
+        <Route path="/register" element={<SignInPage />} />
 
-        <Route path="/home" element={<SignIn />} />
+        <Route path="/home" element={<HomePage />} />
 
       </Routes>
     </Router>

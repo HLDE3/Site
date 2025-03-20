@@ -1,5 +1,5 @@
 import './Login.css'
-import '../main.css'
+import '../colors.css'
 import { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -39,37 +39,39 @@ function SignIn() {
     document.title = "Sign in";
 
     return (
-        <div className="card">
-            <h1>Sign in</h1>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <form onSubmit={handleSubmit}>
+        <div className="card-container">
+            <div className="card">
+                <h1>Sign in</h1>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <input
+                            onChange={handleNameChange}
+                            type="text"
+                            id="login"
+                            name="login"
+                            placeholder="login"
+                            value={login}
+                        />
+                    </div>
+                    <div>
+                        <input
+                            onChange={handlePasswordChange}
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="password"
+                            value={password}
+                        />
+                    </div>
+                    <div>
+                        <button type="submit">Register</button>
+                    </div>
+                </form>
                 <div>
-                    <input
-                        onChange={handleNameChange}
-                        type="text"
-                        id="login"
-                        name="login"
-                        placeholder="login"
-                        value={login}
-                    />
-                </div>
-                <div>
-                    <input
-                        onChange={handlePasswordChange}
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="password"
-                        value={password}
-                    />
-                </div>
-                <div>
-                    <button type="submit">Register</button>
-                </div>
-            </form>
-            <div>
-                <button onClick={() => navigate("/login")}>I'm already have an account</button>
-            </div> 
+                    <button onClick={() => navigate("/login")}>I'm already have an account</button>
+                </div> 
+            </div>
         </div>
     );
 }
