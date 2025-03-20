@@ -7,7 +7,7 @@ function TopBar() {
         <>
         <div className="top-bar-container">
             <div className="top-bar">
-                
+                <button className="account-button">login</button>
             </div>
         </div>
         </>

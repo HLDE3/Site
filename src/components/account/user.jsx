@@ -4,13 +4,12 @@ import { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function Login() {
+function User() {
     const navigate = useNavigate();
-
+    
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [pass, setPass] = useState(false);
 
     const handleNameChange = (e) => setLogin(e.target.value);
     const handlePasswordChange = (e) => setPassword(e.target.value);
@@ -24,32 +23,29 @@ function Login() {
         }
 
         try {
-            await axios.post('http://localhost:1488/users/login', {
+            const response = await axios.post('http://localhost:1488/users/register', {
                 login: login,
                 password: password,
             });
-
-            setPass(true)
+        
         } catch (error) {
-            setError('Ошибка при регистрации: ' + error.message);
+            setError(error.response.data);
         }
 
         setLogin('');
         setPassword('');
     };
 
-    document.title = "Login";
+    document.title = "Sign in";
 
     return (
         <div className="card-container">
             <div className="card">
-                {!pass && <h1>Log in</h1>}
-                {pass && <h1>Зарегался</h1>}
+                <h1>Sign in</h1>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 <form onSubmit={handleSubmit}>
                     <div>
                         <input
-                            className="card"
                             onChange={handleNameChange}
                             type="text"
                             id="login"
@@ -60,7 +56,6 @@ function Login() {
                     </div>
                     <div>
                         <input
-                            className="card"
                             onChange={handlePasswordChange}
                             type="password"
                             id="password"
@@ -70,15 +65,15 @@ function Login() {
                         />
                     </div>
                     <div>
-                        <button className="card" type="submit">Login</button>
+                        <button type="submit">Register</button>
                     </div>
                 </form>
                 <div>
-                    <button className="card" onClick={() => navigate("/register")}>First time here?</button>
-                </div>
+                    <button onClick={() => navigate("/login")}>I'm already have an account</button>
+                </div> 
             </div>
         </div>
     );
 }
 
-export default Login
+export default User
