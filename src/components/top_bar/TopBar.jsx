@@ -1,5 +1,5 @@
 import './TopBar.css'
-import '../colors.css'
+import '../variables.css'
 
 function TopBar() {
 
