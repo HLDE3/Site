@@ -26,6 +26,8 @@ function App() {
 
         <Route path="/login" element={<Login />} />
 
+        <Route path="/topBar" element={<TopBar />} />
+
         <Route path="/home" element={<HomePage />} />
 
       </Routes>
