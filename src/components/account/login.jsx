@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import Cookies from 'js-cookie';
-import { updateTokens, checkAccess, setAuthTokens } from './tokenServise';
+import { updateTokens, checkAccess, setAuthTokens } from './token-servise';
 
 function Login() {
     const navigate = useNavigate();

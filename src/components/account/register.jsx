@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
-import { updateTokens, checkAccess, setAuthTokens } from './tokenServise';
+import { updateTokens, checkAccess, setAuthTokens } from './token-servise';
 
 
 function SignIn() {
@@ -87,7 +87,7 @@ function SignIn() {
     if (isCheckingAccess) {
         return <div className="card-container">Loading...</div>;
     }
-    
+
     return (
         <div className="card-container">
             <div className="card main" style={{width: "250px"}}>
