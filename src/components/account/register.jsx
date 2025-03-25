@@ -1,5 +1,6 @@
-import './Login.css'
+import '../main.css'
 import '../variables.css'
+import './card.css'
 import { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +16,7 @@ function SignIn() {
     const handlePasswordChange = (e) => setPassword(e.target.value);
 
     const handleSubmit = async (e) => {
+        setError("")
         e.preventDefault();
 
         if (!login || !password) {
@@ -23,7 +25,7 @@ function SignIn() {
         }
 
         try {
-            const response = await axios.post('http://localhost:1488/users/register', {
+            const response = await axios.post('http://localhost:1488/auth/register', {
                 login: login,
                 password: password,
             });
@@ -40,8 +42,8 @@ function SignIn() {
 
     return (
         <div className="card-container">
-            <div className="card">
-                <h1>Sign in</h1>
+            <div className="card main"  style={{width: "250px"}}>
+                <h1 className="title">Sign in</h1>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 <form onSubmit={handleSubmit}>
                     <div>

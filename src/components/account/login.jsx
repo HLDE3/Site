@@ -1,4 +1,5 @@
-import './Login.css'
+import './card.css'
+import '../main.css'
 import '../variables.css'
 import { useState } from 'react'
 import axios from 'axios';
@@ -10,12 +11,12 @@ function Login() {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [pass, setPass] = useState(false);
 
     const handleNameChange = (e) => setLogin(e.target.value);
     const handlePasswordChange = (e) => setPassword(e.target.value);
 
     const handleSubmit = async (e) => {
+        setError("")
         e.preventDefault();
 
         if (!login || !password) {
@@ -24,14 +25,15 @@ function Login() {
         }
 
         try {
-            await axios.post('http://localhost:1488/users/login', {
+            await axios.post('http://localhost:1488/auth/login', {
                 login: login,
                 password: password,
             });
 
-            setPass(true)
+            navigate("/user/test")
+            
         } catch (error) {
-            setError('Ошибка при регистрации: ' + error.message);
+            setError(error.response.data);
         }
 
         setLogin('');
@@ -42,14 +44,12 @@ function Login() {
 
     return (
         <div className="card-container">
-            <div className="card">
-                {!pass && <h1>Log in</h1>}
-                {pass && <h1>Зарегался</h1>}
+            <div className="card main" style={{width: "250px"}}>
+                {<h1 className="title">Log in</h1>}
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 <form onSubmit={handleSubmit}>
                     <div>
                         <input
-                            className="card"
                             onChange={handleNameChange}
                             type="text"
                             id="login"
@@ -60,7 +60,6 @@ function Login() {
                     </div>
                     <div>
                         <input
-                            className="card"
                             onChange={handlePasswordChange}
                             type="password"
                             id="password"
@@ -70,11 +69,11 @@ function Login() {
                         />
                     </div>
                     <div>
-                        <button className="card" type="submit">Login</button>
+                        <button type="submit">Login</button>
                     </div>
                 </form>
                 <div>
-                    <button className="card" onClick={() => navigate("/register")}>First time here?</button>
+                    <button onClick={() => navigate("/register")}>First time here?</button>
                 </div>
             </div>
         </div>

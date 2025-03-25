@@ -1,0 +1,59 @@
+
+.main input[type="password"],
+.main input[type="text"] {
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px var(--shadow-color);
+    padding: 10px;
+    width: calc(100% - 20px);
+    transition: all 0.2s ease;
+    margin-bottom: 15px;
+    background-color: var(--button-color);
+    color: var(--text-color);
+}
+
+.main input[type="password"]:focus,
+.main input[type="text"]:focus {
+    outline: none;
+    border-color: var(--color);
+    box-shadow: 0px 0px 8px var(--color);
+}
+
+.main button {
+    border: 0px solid var(--color);
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 15px;
+    width: 100%;
+    box-shadow: 0px 0px 3px var(--shadow-color);
+    transition: all 0.2s ease;
+    background-color: var(--button-color);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.main button:hover {
+    background-color: var(--color);
+    box-shadow: 0px 0px 10px var(--color);
+    transform: translateY(-2px);
+}
+
+.main button:active {
+    transform: translateY(0);
+}
+
+.main p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.main a {
+    color: var(--color);
+    text-decoration: none;
+}
+
+.main a:hover {
+    text-decoration: underline;
+}

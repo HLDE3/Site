@@ -1,12 +1,11 @@
 #root {
-  --color: #19d0d6;
-  --button-color: rgb(34, 34, 34);
-  --top-bar-height: 50px
-  
-  --color: #007bff; /* Основной цвет для акцентов */
-  --button-color: #333; /* Цвет кнопок */
-  --text-color: #fff; /* Цвет текста */
-  --background-color: rgb(22, 22, 22); /* Цвет фона карточки */
-  --border-color: rgb(49, 49, 49); /* Цвет границы */
-  --shadow-color: rgba(0, 0, 0, 0.5); /* Цвет тени */
+  --color: #007bff;
+  --button-color: #333;
+  --text-color: #fff; 
+  --background-color: rgb(22, 22, 22);
+  --border-color: rgb(49, 49, 49);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+
+  --top-bar-height: 70px
+
 }
