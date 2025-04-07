@@ -37,7 +37,6 @@ function SignIn() {
                 password: password,
             });
 
-            // Если регистрация сразу дает токены (как в логине)
             if (response.data.access_token) {
                 
                 setAuthTokens(response.data.access_token, response.data.refresh_token)
@@ -60,7 +59,6 @@ function SignIn() {
     };
 
     useEffect(() => {
-        // Проверяем доступ при монтировании компонента
         const checkAuth = async () => {
             try {
                 const hasAccess = await checkAccess();

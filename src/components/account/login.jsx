@@ -53,7 +53,7 @@ function Login() {
                 password: password,
             });
 
-            setAuthTokens(response.data.access_token, response.data.access_token)
+            setAuthTokens(response.data.access_token, response.data.refresh_token)
 
             const decoded = jwtDecode(response.data.access_token);
             navigate(`/user/${decoded.preferred_login}`);

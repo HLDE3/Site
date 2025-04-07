@@ -43,13 +43,44 @@ function User() {
     }
 
     return (
-        <div>
-            <div className="card-container">
-                <div className="card main" style={{ width: "250px", height: "100px" }}>
-                    <h3 className="title">{user.login}</h3>
+        <>
+            <div>
+                <div className="card-container" style={{flexDirection: "column", gap: "10px"}}>
+                    <div className="card main user-card">
+                        <div>
+                            <div className="avatar-container">                    
+                                <img 
+                                    src={`https://ui-avatars.com/api/?name=${user.login}&background=0D8ABC&color=fff&font-size=0.5&bold=true`} 
+                                    alt="User avatar" 
+                                />
+                                <div className="username-container">
+                                    <h2 className="username">{user.login}</h2>
+                                    <h2 className="uid">id: {user.id}</h2>
+                                </div>
+                            </div>                     
+                        </div>
+                    </div>
+                    <div className="card main user-card">
+                        <div className="user-details">
+                            <div className="detail-item">
+                                <span className="detail-label">Дата регистрации: </span>
+                                <span className="detail-value">{new Date(user.registerDate).toLocaleDateString()}</span>
+                            </div>
+                            <div className="detail-item">
+                                <span className="detail-label">Роль: </span>
+                                <span className="detail-value">{user.role || 'Пользователь'}</span>
+                            </div>
+                            <div className="detail-item">
+                                <span className="detail-label">Статус: </span>
+                                <span className={`status-badge ${user.active ? 'active' : 'inactive'}`}>
+                                    {user.ban ? 'Заблокирован' : user.active ? 'Активен' : 'Неактивен'}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

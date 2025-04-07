@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie'
 import Login from './components/account/login';
+import Shop from './components/shop/shop';
 import SignIn from './components/account/register';
 import TopBar from './components/top_bar/TopBar';
 import NotFound from './components/notfound';
@@ -41,6 +42,13 @@ const NotFoundPage = () =>  (
   </>
 );
 
+const ShopPage = () =>  (
+  <>
+    <TopBar />
+    <Shop/>
+  </>
+);
+
 function App() {  
   
   return (
@@ -54,6 +62,8 @@ function App() {
         <Route path="/register" element={<SignInPage />} />
 
         <Route path="/home" element={<HomePage />} />
+
+        <Route path="/shop" element={<ShopPage />} />
 
         <Route path="/user/:username" element={<UserPage />} />
 
